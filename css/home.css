@@ -1,0 +1,64 @@
+html {font-size: 10px !important;}
+.con {padding-top: 20px;}
+.content {position: relative;width: 1080px;margin: 0 auto;z-index: 1;}
+
+
+.content-top:after {content: "";display: block;clear: both;}
+.content-top ul {width: 25%;position: relative;z-index: 999;}
+.content-top ul li {border-bottom: 1px solid #eee;padding-left: 12px;height: 42px;padding: 12px;cursor: pointer;margin-right: 20px;}
+.content-top ul li a {display: block;font-weight: 600;font-size: 16px;color:#333;}
+.content-top ul li a img {vertical-align: middle;margin-right: 40px;width: 42px;}
+.goods-li span {line-height:20px;display: inline-block;width: 60%;}
+.goods-li img {vertical-align: top !important;}
+
+.con-top-right {width: 75%;padding-top: 15px;display: block;}
+.con-top-right-top {border-bottom: 1px solid #eee;padding-bottom: 10px;}
+/*.con-top-right >:first-child:after {content: "";display: block;overflow: hidden;clear: both;}*/
+.con-top-right-top .img img {width: 506px;position: relative;top: -20px;}
+.con-top-right-top .img {float: left;width: 506px;height: 259px;overflow: hidden;position: relative;}
+.con-top-right-top .word {float: left;width: 304px;}
+.con-top-right-top .word h1,h2,h3,h4 {padding-left: 12px;color: #888;font-size: 13px;}
+.con-top-right-top .word h1 {color: #555;font-size: 1.6rem;font-weight: 600;width: 70%;padding-bottom: 15px;padding-top: 15px;}
+.con-top-right-top .word h2 {word-wrap:break-word;padding-bottom: 25px;	font-size: 13px; }
+.con-top-right-top .word h3 {font-size: 13px;width: 90%;overflow: hidden;text-overflow : ellipsis;white-space : nowrap;padding-bottom: 5px; }
+.con-top-right-top .word h4 {font-size: 13px;}
+.con-top-right-top .word h4 span {margin-left: 100px;}
+.con-top-right-top .word h4 strong {margin-left: 8px;}
+.con-top-right-top .word  button {position: absolute;top: 130;right: 20px;height: 40px;width: 150px;background-color: #53a318;padding: 0px 10px;line-height: 40px;outline: none;color: #fff;font-size: 18px;font-weight: 600;border:none;margin-top: 20px;cursor: pointer;border-radius: 3px;}
+.con-top-right-top .word  button:hover {background-color: #53A338;}
+
+
+.con-top-right-bot {}
+.frame-goods {width: 250px;border-bottom: 1px solid #eee;margin-right: 20px;margin-top: 20px;position: relative;}
+.frame-goods:hover {border-bottom: 1px solid #999;cursor: pointer;}
+.frame-goods:hover .img::after {width: inherit;height: 151px;position: absolute;background-color: rgba(0,0,0,0.4);display: block;content: "";top: 0;left: 0;z-index: 9999;}
+.frame-goods .img {width: 250px;}
+.frame-goods .img img {width: 250px;display: block;}
+.frame-goods p {font-weight: 600;font-size: 16px;color: #333;}
+.frame-goods h2 {padding-left: 0;}
+.frame-goods h1 {margin-top: 30px;}
+.frame-goods h6 {width: 100%;text-align: right;margin-bottom: 5px;}
+
+.frame-goods-f1 {width: 250px;overflow: hidden;margin-top: 20px;position: relative;cursor: pointer;}
+.frame-goods-f1 img {width: 356px;}
+.frame-goods-f1 .frame-goods-f1-text {position: absolute;z-index: 11;top: 20px;left: 0;}
+.frame-goods-f1 button {position: absolute;top: 200px;right: 15px;height: 40px;width: 220px;background-color: transparent;padding: 0px 10px;line-height: 40px;outline: none;color: #fff;font-size: 18px;font-weight: 600;border:none;margin-top: 20px;border-radius: 3px;border:1px solid #fff;cursor: pointer; }
+.frame-goods-f1 h1 {font-weight: 900;color: #fff;font-size: 24px;margin: 60px 0 0 30px;}
+.frame-goods-f1 h2 {font-weight: 900;color: #fff;font-size: 14px;margin-left: 20px;margin-top: 20px;}
+.frame-goods-f1 button:hover {background-color: rgba(250,250,250,0.3);}
+
+.middle-img {width: 1080px;overflow: hidden;margin-top: 20px;}
+.middle-img img {width: 1080px;}
+
+.ajax-frame {width: 1080px;margin: 0 auto;}
+
+.bot-bot {width: 1080px;}
+.bot-bot button {height: 40px;width: 150px;padding: 0px 10px;line-height: 40px;outline: none;font-size: 18px;border:1px solid #999;cursor: pointer;border-radius: 3px;position: relative;left: 50%;margin-left: -75px;margin-top: 50px;background-color: transparent;}
+.bot-bot button:hover {background-color: #999;color: #fff;}
+
+.footer {width: 1080px;margin: 0 auto;margin-top: 40px;}
+.footer-p {width: 100%;border-bottom: 1px dotted #888;padding-bottom: 5px;}
+.foter-ul ul {width: 20%;}
+.foter-ul ul a {color: blue;}
+
+.footer p:nth-child(2) {margin-top: 50px;}
