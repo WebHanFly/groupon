@@ -101,13 +101,13 @@ body {overflow: auto;}
 .goods-list .goods-liston-ul {width: 25%;}
 .goods-list .goods-list-div {width: 75%;border:1px solid #ccc;box-sizing: border-box;border-right: 0;/*height: 568px;*/border-bottom: 0;}
 .goods-list .goods-liston {float: left;font-size: 1.4rem;border-top: none;}
-.goods-list .goods-liston-ul li {line-height: 38px;padding: 0 10px;margin-left: 5px;margin-right: 10px;}
-.goods-list .goods-liston-ul li:first-child {margin-top: 5px;}
+.goods-list .goods-liston-ul li,.carousel-text li {line-height: 38px;padding: 0 10px;margin-left: 5px;margin-right: 10px;}
+.goods-list .goods-liston-ul li:first-child,.carousel-text li:first-child {margin-top: 5px;}
 .goods-list .goods-liston-ul li:nth-child(12) {margin-bottom: 10px;}
 .goods-list .goods-liston-ul li span {text-align: right;display: inline-block;color: #ccc;width: 20%;}
-.goods-list .goods-liston-ul li a {text-align: left;color: #888;width:80%;display: inline-block;}
-.goods-list .goods-liston-ul p {color: #333;width: 80%;height: 38px;margin-left: 20px;font-weight:600;}
-.goods-list .goods-liston-ul p:hover {cursor: pointer;color:#53a318 }
+.goods-list .goods-liston-ul li a ,.carousel-text li a {text-align: left;color: #888;width:80%;display: inline-block;}
+.goods-list .goods-liston-ul p,.carousel-text p{color: #333;width: 80%;height: 38px;margin-left: 20px;font-weight:600;}
+.goods-list .goods-liston-ul p:hover,.carousel-text p:hover {cursor: pointer;color:#53a318 }
 .goods-list .goods-liston-ul .good-list-p {border-top: 1px solid #ccc;padding-top: 20px;}
 
 .goods-list .goods-liston-ul li {position: relative;}

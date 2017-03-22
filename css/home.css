@@ -25,13 +25,14 @@ html {font-size: 10px !important;}
 .con-top-right-top .word h4 span {margin-left: 100px;}
 .con-top-right-top .word h4 strong {margin-left: 8px;}
 .con-top-right-top .word  button {position: absolute;top: 130;right: 20px;height: 40px;width: 150px;background-color: #53a318;padding: 0px 10px;line-height: 40px;outline: none;color: #fff;font-size: 18px;font-weight: 600;border:none;margin-top: 20px;cursor: pointer;border-radius: 3px;}
-.con-top-right-top .word  button:hover {background-color: #53A338;}
+.con-top-right-top .word  button:hover {background-color: green;}
 
 
 .con-top-right-bot {}
 .frame-goods {width: 250px;border-bottom: 1px solid #eee;margin-right: 20px;margin-top: 20px;position: relative;}
 .frame-goods:hover {border-bottom: 1px solid #999;cursor: pointer;}
 .frame-goods:hover .img::after {width: inherit;height: 151px;position: absolute;background-color: rgba(0,0,0,0.4);display: block;content: "";top: 0;left: 0;z-index: 9999;}
+.con-top-right-top:hover  .img::after {width: inherit;height: 259px;position: absolute;background-color: rgba(0,0,0,0.4);display: block;content: "";top: 0;left: 0;z-index: 9999;}
 .frame-goods .img {width: 250px;}
 .frame-goods .img img {width: 250px;display: block;}
 .frame-goods p {font-weight: 600;font-size: 16px;color: #333;}
@@ -61,4 +62,5 @@ html {font-size: 10px !important;}
 .foter-ul ul {width: 20%;}
 .foter-ul ul a {color: blue;}
 
-.footer p:nth-child(2) {margin-top: 50px;}
+.footer div:nth-child(3) p{margin-top: 50px;}
+.footer div:nth-child(2):after {content: "";display: block;clear: both;}
