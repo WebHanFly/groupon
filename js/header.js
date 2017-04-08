@@ -217,5 +217,67 @@ $(".head-nav > ul li").each(function(i,element){
     },5*(i*5/3))
    }
    myloop();
+
+
+
+// footer7 点击显示进度条
+   $(function(){
+        var btn = $('.footer7 .btn');
+        btn.on("click",function(){
+            $(this).addClass('btn__progress');
+            setTimeout(function(){
+                btn.addClass('btn__progress--fill')
+            },500);
+            setTimeout(function(){
+                btn.removeClass('btn__progress--fill')
+            },4100);
+            setTimeout(function(){
+                btn.addClass('btn__complete')
+            },4400)
+        })
+
+   })
+
+
+
+   // footer8 点击背景颜色显示并且一次排开
+   var parent, ink, d, x,y;
+   $('.footer8 ul li a').on('click',function(e){
+            parent = $(this).parent();
+
+            if(parent.find('.ink').length == 0){
+
+                parent.prepend('<em class="ink"></em>')
+            }
+           ink = parent.find('.ink');
+           ink.removeClass('animation');
+           if(!ink.height()&&!ink.width()){
+            d = Math.max(parent.outerWidth(),parent.outerHeight());
+            ink.css({width:d,height:d});
+           }
+
+           x = e.pageX-parent.offset().left-ink.width()/2;
+           y = e.pageY-parent.offset().top-ink.height()/2;
+           ink.css({top:y+'px',left:x+'px'});
+           ink.addClass('animation');
+
+  
+   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 });   //$domready  结束
