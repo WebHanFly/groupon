@@ -109,17 +109,16 @@ $(".head-nav > ul li").each(function(i,element){
 
                  });
               
-           
+          
 
 
             }
              
         carousel();
-        var timer = setInterval(function(){
-             autoplay();
-        },3000);
-
-         function autoplay(){
+        var timer = null
+        clearInterval(timer);
+        timer = setInterval(autoplay,3000);
+        function autoplay(){
             
                         if(now<3){
                         for(var j=0;j<4;j++){
@@ -135,13 +134,16 @@ $(".head-nav > ul li").each(function(i,element){
                             now = -1;
                          }
                      } 
-        $('.carousel-bot').hover(function(){
-            clearInterval(timer);
-        },function(){
-            setInterval(function(){
-             autoplay();
-            },3000);
-        })
+
+       // 清除定时器
+        // $('.carousel-bot').hover(function(){
+        //      //alert(12);
+        //     clearInterval(timer);
+
+        // },function(){
+        //     clearInterval(timer);
+        //     var timer = setInterval(autoplay,3000);
+        // })
        
 
 
@@ -161,5 +163,59 @@ $(".head-nav > ul li").each(function(i,element){
 
 
 
+
+ //footer测试
+ // 给div里面一次添加一个个字符串。运用到了闭包，初始化对象，文档树加载完毕立即执行init函数，并且在init里面调用相关的配置函数。。。。等知识
+   $(function(){
+    var app;
+    //初始化init  在dom ready完成后进行自动执行APP.init函数；
+    $(document).ready(function(){
+         app.init();
+    });
+    //初始化APP这个对象。并且给这个对象配置相应的属性；
+       app = {
+        text:"给div里面一次添加一个个字符串。运用到了闭包，初始化对象，文档树 ",
+        index:0,
+        chars:0,
+        speed:150,
+        container:".footer .content",
+        init:function(){
+            this.chars = this.text.length;
+            //在这里需要调用一下write函数；但是这里与源代码有些不一样的是我没有使用return来返回函数；
+            this.write();
+        },
+        write:function(){
+            //这里主要用来负责给div里面append进去一个个的字符串。用index来索引
+           $(this.container).append(this.text[this.index]);
+           //chars 用来判断字符串是否到达最后一个字符；没有则开个定时器一个个添加进去
+            if(this.index<this.chars){
+                this.index++;
+                setTimeout(function(){
+                     app.write();
+                },this.speed)
+            }
+        }
+       };
+   }.call(this));//this 是为了保证闭包里面的this指向统一
+
+
+
+
+
+ // footer5 
+   var  sh = 18;
+   function dropsh(val){
+        var $tesh = $('.footer5 div p').css('textShadow');
+        $('.footer5 div p').css('textShadow',$tesh+','+val+'px 0 #ff7373')
+   }
+   var i = 0;
+   function myloop(){
+    setTimeout(function(){
+        dropsh(i);
+        i++;
+        if(i<sh){myloop()}
+    },5*(i*5/3))
+   }
+   myloop();
   
 });   //$domready  结束
