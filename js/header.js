@@ -2,31 +2,31 @@
 
 $(function(){
 	//导航栏的hover   拷贝
-(function($){
-    $.fn.hoverDelay = function(options){
-        var defaults = {
-            hoverDuring: 200,
-            outDuring: 200,
-            hoverEvent: function(){
-                $.noop();
-            },
-            outEvent: function(){
-                $.noop();    
-            }
-        };
-        var sets = $.extend(defaults,options || {});
-        var hoverTimer, outTimer;
-        return $(this).each(function(){
-            $(this).hover(function(){
-                clearTimeout(outTimer);
-                hoverTimer = setTimeout(sets.hoverEvent, sets.hoverDuring);
-            },function(){
-                clearTimeout(hoverTimer);
-                outTimer = setTimeout(sets.outEvent, sets.outDuring);
-            });    
-        });
-    }      
-})(jQuery);
+    (function($){
+        $.fn.hoverDelay = function(options){
+            var defaults = {
+                hoverDuring: 200,
+                outDuring: 200,
+                hoverEvent: function(){
+                    $.noop();
+                },
+                outEvent: function(){
+                    $.noop();    
+                }
+            };
+            var sets = $.extend(defaults,options || {});
+            var hoverTimer, outTimer;
+            return $(this).each(function(){
+                $(this).hover(function(){
+                    clearTimeout(outTimer);
+                    hoverTimer = setTimeout(sets.hoverEvent, sets.hoverDuring);
+                },function(){
+                    clearTimeout(hoverTimer);
+                    outTimer = setTimeout(sets.outEvent, sets.outDuring);
+                });    
+            });
+        };      
+    })(jQuery);
 
 
 $(".head-nav > ul li").each(function(i,element){
@@ -37,7 +37,13 @@ $(".head-nav > ul li").each(function(i,element){
             hoverDuring: 100,
 			hoverEvent: function(){
                var $list = $('.list-wrap > div')[i];
-          		$($list).css('display','block').siblings().css('display','none').hover(function(){$(this).css('display','block')},function(){$(this).css('display','none')});
+          		$($list).css('display','block').siblings().css('display','none').hover(
+                    function(){
+                        $(this).css('display','block');
+                    },
+                    function(){
+                        $(this).css('display','none');
+                    });
           		$(_this).find('a').addClass('nav-tabs-act');      
 
             },
@@ -108,14 +114,10 @@ $(".head-nav > ul li").each(function(i,element){
                       autoplay();
 
                  });
-              
-          
-
-
             }
              
         carousel();
-        var timer = null
+        var timer = null;
         clearInterval(timer);
         timer = setInterval(autoplay,3000);
         function autoplay(){
@@ -165,12 +167,22 @@ $(".head-nav > ul li").each(function(i,element){
 
 
  //footer测试
+ // footer1
  // 给div里面一次添加一个个字符串。运用到了闭包，初始化对象，文档树加载完毕立即执行init函数，并且在init里面调用相关的配置函数。。。。等知识
    $(function(){
     var app;
     //初始化init  在dom ready完成后进行自动执行APP.init函数；
     $(document).ready(function(){
-         app.init();
+       $(document).on('scroll',function(){
+           var Ttop = $('.footer .content').offset().top; //目标div的距离文档的最顶部的值
+           var Ctop = $(window).height();  //window可见窗口的高度值
+           var Stop = $(window).scrollTop(); //window窗口的卷轴的值
+           if(Stop>Ttop-Ctop+Ctop/2.5){
+                app.init();
+            }
+            
+        });
+         
     });
     //初始化APP这个对象。并且给这个对象配置相应的属性；
        app = {
@@ -182,7 +194,7 @@ $(".head-nav > ul li").each(function(i,element){
         init:function(){
             this.chars = this.text.length;
             //在这里需要调用一下write函数；但是这里与源代码有些不一样的是我没有使用return来返回函数；
-            this.write();
+            return this.write();
         },
         write:function(){
             //这里主要用来负责给div里面append进去一个个的字符串。用index来索引
@@ -192,7 +204,7 @@ $(".head-nav > ul li").each(function(i,element){
                 this.index++;
                 setTimeout(function(){
                      app.write();
-                },this.speed)
+                },this.speed);
             }
         }
        };
@@ -203,70 +215,127 @@ $(".head-nav > ul li").each(function(i,element){
 
 
  // footer5 
-   var  sh = 18;
-   function dropsh(val){
-        var $tesh = $('.footer5 div p').css('textShadow');
-        $('.footer5 div p').css('textShadow',$tesh+','+val+'px 0 #ff7373')
-   }
-   var i = 0;
-   function myloop(){
-    setTimeout(function(){
-        dropsh(i);
-        i++;
-        if(i<sh){myloop()}
-    },5*(i*5/3))
-   }
-   myloop();
+     !function(){
+          var  sh = 18;
+          function dropsh(val){
+               var $tesh = $('.footer5 div p').css('textShadow');
+               $('.footer5 div p').css('textShadow',$tesh+','+val+'px 0 #ff7373');
+          }
+          var i = 0;
+          function myloop(){
+           setTimeout(function(){
+               dropsh(i);
+               i++;
+               if(i<sh){myloop();}
+           },5*(i*5/3));
+          }
+        myloop();
+     }();
+       
+
+        
 
 
 
 // footer7 点击显示进度条
-   $(function(){
+   !function(){
         var btn = $('.footer7 .btn');
         btn.on("click",function(){
             $(this).addClass('btn__progress');
             setTimeout(function(){
-                btn.addClass('btn__progress--fill')
+                btn.addClass('btn__progress--fill');
             },500);
             setTimeout(function(){
-                btn.removeClass('btn__progress--fill')
+                btn.removeClass('btn__progress--fill');
             },4100);
             setTimeout(function(){
-                btn.addClass('btn__complete')
-            },4400)
-        })
+                btn.addClass('btn__complete');
+            },4400);
+        });
+   }();
+        
 
-   })
+  
 
 
 
    // footer8 点击背景颜色显示并且一次排开
-   var parent, ink, d, x,y;
-   $('.footer8 ul li a').on('click',function(e){
-            parent = $(this).parent();
+   !function(){
+        var parent, ink, d, x,y;
+        $('.footer8 ul li a').on('click',function(e){
+                 parent = $(this).parent();
 
-            if(parent.find('.ink').length == 0){
+                 if(parent.find('.ink').length === 0){
 
-                parent.prepend('<em class="ink"></em>')
-            }
-           ink = parent.find('.ink');
-           ink.removeClass('animation');
-           if(!ink.height()&&!ink.width()){
-            d = Math.max(parent.outerWidth(),parent.outerHeight());
-            ink.css({width:d,height:d});
-           }
+                     parent.prepend('<em class="ink"></em>');
+                 }
+                ink = parent.find('.ink');
+                ink.removeClass('animation');
+                if(!ink.height()&&!ink.width()){
+                 d = Math.max(parent.outerWidth(),parent.outerHeight());
+                 ink.css({width:d,height:d});
+                }
 
-           x = e.pageX-parent.offset().left-ink.width()/2;
-           y = e.pageY-parent.offset().top-ink.height()/2;
-           ink.css({top:y+'px',left:x+'px'});
-           ink.addClass('animation');
+                x = e.pageX-parent.offset().left-ink.width()/2;
+                y = e.pageY-parent.offset().top-ink.height()/2;
+                ink.css({top:y+'px',left:x+'px'});
+                ink.addClass('animation');
+
+        });
+   }();
+   
+
+
+
+  // .footer9 实现炫酷的3d图片切换效果；运用到了es6的部分语法，
+    !function(){
+         var img = '',count = 50;
+        for (var i = 1;i<=count;i++){
+            img +='<img src="http://thecodeplayer.com/u/uifaces/'+i+'.jpg"/>';
+        }
+        $('.footer9 .grid').append(img);
+         var d = 0;
+        var ry, tz, s;
+        $('.footer9 .animation').stop().on('click',function(){
+            $('.footer9 img').each(function(){
+                d = Math.random()*1000;
+                $(this).delay(d).animate({opacity:0},{
+                    step:function(fx){
+                        //console.log(fx);step方法里面的参数只是一个随机数，fx只是一个参数
+                        s = 1-fx;
+                        $(this).css('transform','scale('+s+')');
+                    },
+                    duration:1000,
+                    
+                });
+            }).promise().done(function(){
+                //storm();
+            });
+        });
+       function storm(){
+            $('.footer9 img').each(function(){
+                d = Math.random()*1000;
+                $(this).delay(d).animate(
+                    {opacity:1},
+                    {
+                    duration :1500,
+                    easing:'swing',
+                    step:function(fx){
+                        ry = (1-fx)*360;
+                        tz = (1-fx)*1000;
+                        console.log(fx)
+                        $(this).css('transform','rotateY('+ry+'deg) translateZ('+tz+'px)');
+                    },
+                        
+                });
+            });
+        }
+   
+    }();
+       
+
 
   
-   })
-
-
-
-
 
 
 
