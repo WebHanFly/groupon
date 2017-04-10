@@ -1,4 +1,6 @@
-$(function(){
+
+
+	//--对boy的背景进行封装，并且进行自适应处理。返回一个自适应的boy背景的swipe对象
 	function Swipe(container){
 		var element = container.find(":first");
 		var swipe = {};
@@ -21,59 +23,17 @@ $(function(){
 			return this;
 		};
 		return swipe;
-	}
+	}//---------------swipe结束-----------//
 
 
-		var container = $('.content');
-		//页面的可视区域
-		var visualWidth = container.width();
-		var visualHeight = container.height();
-		var swiper = Swipe(container);  //给content传进swipe里面，返回一个swipe对象
-		//获取数据
-		var getValue = function (classname) {
-			var $elem = $(''+classname+'');
-			//走路的路线坐标
-			return {
-				height:$elem.height(),
-				top: $elem.offset().top,
-			};
-		};
-		//路的Y轴
-		var pathY = function(){
-			var data = getValue('.a_background_middle');
-			return data.top+data.height/2;
-		}();
-		var $boy = $('#boy');
-		var boyHeight = $boy.height();
-		//修正男孩的正确位置
-		$boy.css({
-			top:pathY-boyHeight
-		});
+		
 
 
-//////////////////////////////////动画处理
-///恢复走路
-    function restoreWalk(){
-    	$boy.removeClass('pausewalk');
-    }
-
- //小男孩 的动作变化
- function slowwalk(){
- 	$boy.addClass('slowwalk');
- }
- //计算移动距离
- function calcdist (direction,proportion){
- 	return (direction == x?visualWidth:visualHeight)*proportion;
- 	
- }
+ 
 
 
 
 
 
 
-
-
-
-
-});
+//---------------domready 结束-------------//

@@ -25,4 +25,14 @@
 		<div id="boy" class="charactor"></div>
 	</div>
 </body>
+<script>
+		var container = $('.content');
+		//var swipe = Swipe(container);
+		var boy = boywalk();
+		boy.walkTo(2000,0.2).then(function(){
+			boy.setColor('#ccc');
+			}).then(function(){
+			return	walkTo(4000,0.4);
+		})
+</script>
 </html>
