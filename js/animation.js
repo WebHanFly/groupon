@@ -54,7 +54,7 @@ function cssanimation(options,runtime){
 		runtime,
 		'linear',
 		function(){
-			dfdplay.resolve();
+			dfdplay.resolve(); //动画完成
 		}
 	);
 	return dfdplay;
@@ -65,8 +65,9 @@ function cssanimation(options,runtime){
 
  //开始走路
  function walkrun (time,dist,distY){
- 	time = time || 300;
+ 	time = time || 3000;
  	slowwalk();
+ 	//开始走路
  	var d1 = cssanimation({
  		left: dist+'px',
  		top:  distY ? distY : undefined

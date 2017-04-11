@@ -15,7 +15,7 @@
 		});
 
 		swipe.scrollTo = function(x,speed){
-			elements.css({
+			element.css({
 				'transition-timing-function' : 'linear',
 	            'transition-duration'        : speed + 'ms',
 	            'transform'                  : 'translate3d(-' + x + 'px,0px,0px)'
