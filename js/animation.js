@@ -93,10 +93,41 @@ return {
 
 };
 
+//第二幅画面的开关门
+function dooraction(left,right,time) {
+	var $door = $('.door');
+	var doorleft = $('.door_left');
+	var doorright = $('.door_right');
+	var defer = $.Deffered();
+	var count = 2;
+	//等待开门完成
+	var complete = function (){
+		if(count === 1 ){
+			defer.resolve();
+			return;
+		}
+		count--;
+	};
+	doorleft.animate({
+		'left':left,
+	},time,complete);
+	doorright.animate({
+		'right':right,
+	},time,complete);
+	return defer;
+	 
+}   //-----------dooraction结束------------------
 
+//-----开门
+function opendoor(){
+	return dooraction('-50%','100%',2000);
+}
+//关门
+function shutdoor() {
+	return dooraction('0%','50%',2000);
+}
 
-
-
+opendoor();
 } //----------- boywalk 结束
 
 

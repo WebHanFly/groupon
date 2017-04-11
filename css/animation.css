@@ -4,7 +4,7 @@ html {-webkit-text-size-adjust:none;font-size: 100px;font-family: 'microsoft YaH
 body {text-align: center;}
 ul,li {list-style: none;}
 
-.content {width: 100%;height: 100%;}
+.content {width: 100%;height: 100%;overflow-y: hidden;}
 .content .wrap {position: relative;}
 .content ul {width: 300%;height: 100%;}
 .content ul li {width: 33.33333%;height: 100%;float: left;font-size: 30px;}
@@ -60,8 +60,78 @@ ul,li {list-style: none;}
 	
 	background: url(../img/images/cloud2.png);
 }
+.cloud1Anim {
+	animation: smallcloud 20s infinite alternate;
+}
+.cloud2Anim {
+	animation: bigcloud 30s infinite alternate;
+}
+@keyframes smallcloud {
+	0% {
+		left: -5%;
+	}
+	100% {
+		left:100%
+	}
+}
+@keyframes bigcloud {
+	0% {
+		right: -5%;
+	}
+	100% {
+		right:100%
+	}
+}
 
-.itme2 {background: url(../img/images/QixiB-bright.png) no-repeat center center;background-size: 100% 100%;}
+.itme2 { position: relative;}
+.itme2 .b_background {
+	width: 100%;height: 100%;
+	background: url(../img/images/QixiB-bright.png) no-repeat center center;
+	background-size: 100% 100%;
+	position: absolute;
+}
+.itme2 .b_background_pre {
+	background: url(../img/images/QixiB-bright.png) no-repeat -9999px -9999px;
+	background-size: 100% 100%;
+	position: absolute;
+}
+.lamp_bright {
+
+}
+.shop {
+	position: absolute;
+	width: 39.5%;
+	height: 35.5%;
+	left: 29%;
+	top: 36.5%;
+
+}
+.shop .door {
+	position: absolute;
+	width: 32%;
+	height: 67%;
+	top: 32%;
+	overflow: hidden;
+	left: 58.5%;
+}
+.door_left,.door_right {
+	width: 50%;
+	height: 100%;
+	position: absolute;
+	background-size: 100% 100%;
+
+}
+.door_left {
+	left: 0%;
+	background: url(../img/images/door-left.png) no-repeat -0px -30px;
+}
+.door_right {
+	right: 0%;
+	background: url(../img/images/door-right.png) no-repeat -0px -30px ;
+}
+
+
+
 .itme3 {background: url(../img/images/background/c_background_top.png) no-repeat center center;}
 
 .charactor {background: url(../img/images/boy.png) -0px -291px no-repeat;
