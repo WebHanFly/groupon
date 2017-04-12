@@ -93,12 +93,19 @@ return {
 
 };
 
+
+
+} //----------- boywalk 结束
+
+
+
+
 //第二幅画面的开关门
-function dooraction(left,right,time) {
+function dooraction(lef,righ,time) {
 	var $door = $('.door');
 	var doorleft = $('.door_left');
 	var doorright = $('.door_right');
-	var defer = $.Deffered();
+	var defer = $.Deferred();
 	var count = 2;
 	//等待开门完成
 	var complete = function (){
@@ -108,27 +115,43 @@ function dooraction(left,right,time) {
 		}
 		count--;
 	};
-	doorleft.animate({
-		'left':left,
+	$('.door_left').animate({
+		left:lef
 	},time,complete);
-	doorright.animate({
-		'right':right,
+	$('.door_right').animate({
+		right:righ
 	},time,complete);
-	return defer;
+	
+	 return defer;
 	 
 }   //-----------dooraction结束------------------
 
 //-----开门
 function opendoor(){
-	return dooraction('-50%','100%',2000);
+	
+	return dooraction('-50%','-50%',2000);
+
 }
 //关门
 function shutdoor() {
-	return dooraction('0%','50%',2000);
+	return dooraction('0%','0%',2000);
 }
 
-opendoor();
-} //----------- boywalk 结束
+//开关灯的变化：
 
 
 
+
+ var lamp = {
+	elem  : $('.b_background'),
+	bright:function(){
+		
+		this.elem.addClass('lamp_bright');
+		console.log(this);
+
+	},
+	dark :function(){
+		this.elem.removeClass('lamp_bright')
+	}
+
+}

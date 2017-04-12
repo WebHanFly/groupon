@@ -68,15 +68,31 @@ $(function(){
       		swipe.scrollTo(distX,time);
       }
 
-      boy.walkTo(2000,0.2)
-      .then(function(){
-      	scrollTo(15000,1);
-      }).then(function(){
-      	return boy.walkTo(5000,0.5);
-      }).then();
 
 
 
+      // boy.walkTo(2000,0.2)
+      // .then(function(){
+      // 	scrollTo(15000,1);
+      // }).then(function(){
+      // 	return boy.walkTo(5000,0.5);
+      // }).then(function(){
+      // 	opendoor()
+      // }).then(function(){
+      // 	lamp.bright();
+      // });
+      
+
+
+      opendoor().then(function(){
+      	lamp.bright();
+
+      });
+      // shutdoor().then(function(){
+      // 	lamp.dark();
+      // })
+
+console.log(boywalk)
 })  //-------domready结束---------			
 </script>
 </html>
