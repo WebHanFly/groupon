@@ -70,29 +70,44 @@ $(function(){
 
 
 
+//开关灯的变化：
+     var lamp = {
+			elem  : $('.b_background'),
+			bright:function(){
+				
+				this.elem.addClass('lamp_bright');
+				console.log(this);
 
-      // boy.walkTo(2000,0.2)
-      // .then(function(){
-      // 	scrollTo(15000,1);
-      // }).then(function(){
-      // 	return boy.walkTo(5000,0.5);
-      // }).then(function(){
-      // 	opendoor()
-      // }).then(function(){
-      // 	lamp.bright();
-      // });
+			},
+			dark :function(){
+				this.elem.removeClass('lamp_bright');
+			}
+	};
+
+
+      boy.walkTo(2000,0.2) //行走2S 
+      .then(function(){
+      	scrollTo(10000,1);  //背景开始运动1个屏幕的距离花时10S
+      }).then(function(){
+      	return boy.walkTo(10000,0.5); //男孩继续走 距离花时10S
+      }).then(function(){
+      	 boy.stopwalk();   //暂停走路，
+      }).then(function(){
+      	return opendoor(); //开门
+      }).then(function(){
+      		lamp.bright();  //开灯；
+      }).then(function(){
+      	return boy.toshop(2000);
+      });
       
 
 
-      opendoor().then(function(){
-      	lamp.bright();
+      // opendoor().then(function(){
+      // 	lamp.bright();
 
-      });
-      // shutdoor().then(function(){
-      // 	lamp.dark();
-      // })
+      // });
+    
 
-console.log(boywalk)
-})  //-------domready结束---------			
+});  //-------domready结束---------			
 </script>
 </html>

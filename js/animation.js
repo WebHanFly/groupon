@@ -28,6 +28,12 @@ function boywalk(){
 
 
 //////////////////////////////////动画处理
+//暂停走路
+function pausewalk(){
+	$boy.addClass('pausewalk');
+}
+
+
 ///恢复走路
     function restoreWalk(){
     	$boy.removeClass('pausewalk');
@@ -76,6 +82,58 @@ function cssanimation(options,runtime){
 
  }
 
+//走进商店
+function walktoshop(runtime){
+	var defer = $.Deferred();
+	var doorObj = $('.door');
+	var offsetdoor = doorObj.offset();
+	var dooroffsetleft = offsetdoor.left;
+	var offsetboy = $boy.offset();
+	var boyoffsetleft = offsetboy.left;
+
+	//当前需要移动的坐标；
+	instanceX = (dooroffsetleft+doorObj.width()/2)-(boyoffsetleft+$boy.width()/2);
+
+	//开始走路
+	var walkplay = cssanimation({
+		//transform: 'translateX(' + instanceX + 'px)',
+		transform:'scale(0.3,0.3)',
+		//opacity:0.1 
+	},2000);
+
+	//走路完毕：
+	walkplay.done(function(){
+		$boy.css({
+			//opacity:0
+		});
+		defer.resolve();
+	});
+	return  defer;
+
+}
+
+
+//走出商店
+function walkoutshop(runtime){
+		var defer = $.Deferred();
+
+		var walkplay = cssanimation({
+		transform:'translateX('+instanceX+'px),scale(1,1)',
+		opacity:1 
+	},runtime);
+
+	//走路完毕：
+	walkplay.done(function(){
+		
+		defer.resolve();
+	});
+	return  defer;
+
+}
+
+
+
+
 return {
 	//开始走路
 	  walkTo: function(time,proportionx,proportiony){
@@ -83,12 +141,16 @@ return {
 		  	var disty = calcdist('y',proportiony);
 		  	return walkrun(time,distx,disty);
 	  },
+	  //暂停走路
 	  stopwalk:function(){
 	  	pausewalk();
 	  },
-	  setColor:function(value){
-	  	$boy.css('backgroundColor',value);
+	  //走进商店
+	  toshop:function(){
+	  	return walktoshop.apply(null,arguments);
 	  }
+
+
 
 
 };
@@ -137,21 +199,9 @@ function shutdoor() {
 	return dooraction('0%','0%',2000);
 }
 
-//开关灯的变化：
 
 
 
 
- var lamp = {
-	elem  : $('.b_background'),
-	bright:function(){
-		
-		this.elem.addClass('lamp_bright');
-		console.log(this);
+ 
 
-	},
-	dark :function(){
-		this.elem.removeClass('lamp_bright')
-	}
-
-}
