@@ -183,3 +183,64 @@ ul,li {list-style: none;}
 		transform: translateX(-2000px) translateY(400px);
 	}
 }
+
+/*进入商店*/
+.scaleboy {
+	transform:  translateX(50px) scale(0.5,0.5);
+	/*opacity: 0;*/
+	transition: all 2s linear;
+}
+.scaleboyout {
+	transform:  translateX(100px) scale(1,1);
+	
+	transition: all 2s linear;
+}
+
+/*买花*/
+.slowflowerwalk {
+	animation: person-flower-slow 950ms infinite step-start;
+}
+@keyframes person-flower-slow {
+	0% {
+		background-position: -453px -0px;
+	}
+	25% {
+		background-position: -904px -0px;
+	}
+	50% {
+		background-position: -451px -0px;
+	}
+	75% {
+		background-position: -753px -0px;
+	}
+	100% {
+		background-position: -300px -0px;
+	}
+}
+
+.bird {
+	min-width: 91px;
+	min-height: 71px;
+	top:10%;
+	position: absolute;
+	z-index: 10;
+	right: -91px;
+	background: url(../img/images/bird.png) -182px 0 no-repeat ;
+}
+.birdfly {
+	animation: bird-slow 400ms step-start infinite;
+}
+@keyframes  bird-slow{
+	0% {
+		background-position: -182px 0px;
+	}
+	50% {
+		background-position: -0px 0px;
+	}
+	75% {
+		background-position: -91px 0px;
+	}
+	100% {
+		background-position: -182px 0px;
+	}
+}

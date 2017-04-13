@@ -96,32 +96,40 @@ function walktoshop(runtime){
 
 	//开始走路
 	var walkplay = cssanimation({
-		//transform: 'translateX(' + instanceX + 'px)',
-		transform:'scale(0.3,0.3)',
-		//opacity:0.1 
-	},2000);
-
+		opacity:0 
+	},1000);
+	walkplay.done($boy.addClass('scaleboy'));
 	//走路完毕：
 	walkplay.done(function(){
 		$boy.css({
-			//opacity:0
-		});
+			opacity:0,
+			});
 		defer.resolve();
 	});
 	return  defer;
 
 }
 
+//取花
+   function takeflower(){
+   	var defer = $.Deferred();
+   	setTimeout(function(){
+   		$boy.addClass('slowflowerwalk');
+   		defer.resolve();
+   	},2000)
+   	return defer;
+   }
+
 
 //走出商店
 function walkoutshop(runtime){
 		var defer = $.Deferred();
-
+			
 		var walkplay = cssanimation({
-		transform:'translateX('+instanceX+'px),scale(1,1)',
+		//transform:'translateX('+instanceX+'px),scale(1,1)',
 		opacity:1 
 	},runtime);
-
+		walkplay.done($boy.addClass('scaleboyout'));
 	//走路完毕：
 	walkplay.done(function(){
 		
@@ -148,8 +156,14 @@ return {
 	  //走进商店
 	  toshop:function(){
 	  	return walktoshop.apply(null,arguments);
-	  }
+	  },
 
+	  outshop:function(){
+	  	return walkoutshop.apply(null,arguments);
+	  },
+	  takeflower:function(){
+	  	return takeflower();
+	  }
 
 
 

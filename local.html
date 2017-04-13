@@ -34,9 +34,13 @@
 						<div class="door_left"></div>
 						<div class="door_right"></div>
 					</div>
+					<!-- 灯 -->
+					<div class="lamp"></div>
 				</div>
-				<!-- 灯 -->
-				<div class="lamp"></div>
+				<!-- 鸟 -->
+				<div class="bird birdfly"></div>
+				
+				
 			</li>
 			<li class="itme3"><h1>content3</h1></li>
 		</ul>
@@ -83,6 +87,24 @@ $(function(){
 				this.elem.removeClass('lamp_bright');
 			}
 	};
+//第二幅画面的飞鸟的动画
+  var bird = {
+  	elem :$('.bird'),
+  	fly:function(){
+  		this.elem.addClass('birdfly');
+  		this.elem.animate({
+  			right:container.width(),
+  		},15000,'linear');
+  	}
+  };
+
+
+
+
+
+
+
+
 
 
       boy.walkTo(2000,0.2) //行走2S 
@@ -97,7 +119,19 @@ $(function(){
       }).then(function(){
       		lamp.bright();  //开灯；
       }).then(function(){
-      	return boy.toshop(2000);
+      	return boy.toshop(2000); //进入商店
+      }).then(function(){
+      	return boy.takeflower();  //取花
+      }).then(function(){
+      	bird.fly();          //飞鸟
+      }).then(function(){
+      	return boy.outshop();
+      }).then(function(){
+      	return shutdoor();
+      }).then(function(){
+      	lamp.dark();
+      }).then(function(){
+      	boy.walkTo(3100,.9)
       });
       
 
