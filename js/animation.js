@@ -6,7 +6,7 @@ function boywalk(){
 		var visualHeight = container.height();
 		var swiper = Swipe(container);  //给content传进swipe里面，返回一个swipe对象
 		//获取数据
-		var getValue = function (classname) {
+		getValue = function (classname) {
 			var $elem = $(''+classname+'');
 			//走路的路线坐标
 			return {
@@ -116,7 +116,7 @@ function walktoshop(runtime){
    	setTimeout(function(){
    		$boy.addClass('slowflowerwalk');
    		defer.resolve();
-   	},2000)
+   	},2000);
    	return defer;
    }
 

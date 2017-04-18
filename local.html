@@ -82,6 +82,8 @@ $(function(){
 		var container = $('.content');
 		var swipe = Swipe(container);
 		var boy = boywalk();
+		var visualWidth = container.width();
+		var visualHeight = container.height();
 		//--------------测试then函数---------------------------
 		// boy.walkTo(2000,0.2).then(function(){
 		// 	boy.setColor('#ccc');
@@ -126,32 +128,39 @@ $(function(){
   	}
   };
 
-// var girl = {
-// 	elem : $('.girl'),
-// 	getHeight:function(){
-// 		return this.elem.height();
-// 	},
-// 	// 转身动作
-// 	rotate:function(){
-// 		this.elem.addClass('girl-rotate');
-// 	},
-// 	setoffset:function(){
-// 		this.elem.css({
-// 			left:visualWidth/2,
-// 			top:bridge-this.getHeight()
-// 		});
-// 	},
-// 	getoffset:function(){
-// 		return this.elem.offset();
-// 	},
-// 	getwidth:function(){
-// 		return this.elem.width();
-// 	}
+// 桥的Y轴
+ var bridgeY = function(){
+ 	var data = getValue('.c_background_middle');
+ 	return data.top;	
+ }();
 
 
-// };
-// // 修正小女孩的位置
-//   girl.setoffset();
+var girl = {
+	elem : $('.girl'),
+	getHeight:function(){
+		return this.elem.height();
+	},
+	// 转身动作
+	rotate:function(){
+		this.elem.addClass('girl-rotate');
+	},
+	setoffset:function(){
+		this.elem.css({
+			left:visualWidth/2,
+			top:bridgeY-this.getHeight()
+		});
+	},
+	getoffset:function(){
+		return this.elem.offset();
+	},
+	getwidth:function(){
+		return this.elem.width();
+	}
+
+
+};
+// 修正小女孩的位置
+  girl.setoffset();
 
 
 
@@ -184,12 +193,16 @@ $(function(){
       }).then(function(){
       	lamp.dark();
       }).then(function(){
-      	boy.walkTo(5000,.12)
+      	boy.walkTo(5000,0.1);
       }).then(function(){
-      	scrollTo(10000,2);  //背景开始运动1个屏幕的距离花时10S
+      	scrollTo(5000,2);  //背景开始运动1个屏幕的距离花时10S
+      }).then(function(){
+      	return boy.walkTo(1500,0.25, (bridgeY - girl.getHeight()) / visualHeight);
+      }).then(function(){
+      	return boy.walkTo(1200,0.35);
       });
       
-
+//console.log()
 
       // opendoor().then(function(){
       // 	lamp.bright();
