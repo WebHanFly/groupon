@@ -42,7 +42,35 @@
 				
 				
 			</li>
-			<li class="itme3"><h1>content3</h1></li>
+			<li class="itme3">
+				<!-- 背景图 -->
+				<div class="c_background">
+					<div class="c_background_top"></div>
+					<div class="c_background_middle"></div>
+					<div class="c_background_bottom"></div>
+
+				</div>
+				<!-- 小女孩 -->
+				<div class="girl"></div>
+				<!-- 水波 -->
+				<div class="bridge-bottom">
+					<div class="water">
+						<div class="water1"></div>
+						<div class="water2"></div>
+						<div class="water3"></div>
+						<div class="water4"></div>
+					</div>
+				</div>
+				<!-- 星星 -->
+				<ul class="stars">
+					<li class="stars1"></li>
+					<li class="stars2"></li>
+					<li class="stars3"></li>
+					<li class="stars4"></li>
+					<li class="stars5"></li>
+					<li class="stars6"></li>
+				</ul>
+			</li>
 		</ul>
 		<div id="boy" class="charactor"></div>
 	</div>
@@ -98,7 +126,32 @@ $(function(){
   	}
   };
 
+// var girl = {
+// 	elem : $('.girl'),
+// 	getHeight:function(){
+// 		return this.elem.height();
+// 	},
+// 	// 转身动作
+// 	rotate:function(){
+// 		this.elem.addClass('girl-rotate');
+// 	},
+// 	setoffset:function(){
+// 		this.elem.css({
+// 			left:visualWidth/2,
+// 			top:bridge-this.getHeight()
+// 		});
+// 	},
+// 	getoffset:function(){
+// 		return this.elem.offset();
+// 	},
+// 	getwidth:function(){
+// 		return this.elem.width();
+// 	}
 
+
+// };
+// // 修正小女孩的位置
+//   girl.setoffset();
 
 
 
@@ -131,7 +184,9 @@ $(function(){
       }).then(function(){
       	lamp.dark();
       }).then(function(){
-      	boy.walkTo(3100,.9)
+      	boy.walkTo(5000,.12)
+      }).then(function(){
+      	scrollTo(10000,2);  //背景开始运动1个屏幕的距离花时10S
       });
       
 

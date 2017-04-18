@@ -309,7 +309,7 @@ $(".head-nav > ul li").each(function(i,element){
                     
                 });
             }).promise().done(function(){
-                //storm();
+                    storm();
             });
         });
        function storm(){
@@ -323,7 +323,7 @@ $(".head-nav > ul li").each(function(i,element){
                     step:function(fx){
                         ry = (1-fx)*360;
                         tz = (1-fx)*1000;
-                        console.log(fx)
+                        
                         $(this).css('transform','rotateY('+ry+'deg) translateZ('+tz+'px)');
                     },
                         

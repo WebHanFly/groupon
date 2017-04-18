@@ -4,15 +4,15 @@
 	function Swipe(container){
 		var element = container.find(":first");
 		var swipe = {};
-		var sliders = element.find('li');
+		var sliders = element.find('>');
 		var width = container.width();
 		var height = container.height();
-	
 		element.css({width:(sliders.length*width)+'px',height:height+'px'});
 		$.each(sliders,function(i){
 			var slider = sliders.eq(i);
 			slider.css({width:width+'px',height:height+'px'});
 		});
+		console.log(element.width());
 
 		swipe.scrollTo = function(x,speed){
 			element.css({

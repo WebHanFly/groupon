@@ -5,9 +5,9 @@ body {text-align: center;}
 ul,li {list-style: none;}
 
 .content {width: 100%;height: 100%;overflow-y: hidden;}
-.content .wrap {position: relative;}
+.content .wrap {position: relative;overflow: hidden;}
 .content ul {width: 300%;height: 100%;}
-.content ul li {width: 33.33333%;height: 100%;float: left;font-size: 30px;}
+.content > ul > li {width: 33.33333%;height: 100%;float: left;font-size: 30px;position: relative;}
 
 .itme1 { position: relative;}
 .itme1 .a_background {
@@ -135,7 +135,6 @@ ul,li {list-style: none;}
 
 
 
-.itme3 {background: url(../img/images/background/c_background_top.png) no-repeat center center;}
 
 .charactor {background: url(../img/images/boy.png) -0px -291px no-repeat;
 	 		position: absolute;
@@ -191,7 +190,7 @@ ul,li {list-style: none;}
 	transition: all 2s linear;
 }
 .scaleboyout {
-	transform:  translateX(100px) scale(1,1);
+	transform:  translateX(50px) scale(1,1);
 	
 	transition: all 2s linear;
 }
@@ -244,3 +243,171 @@ ul,li {list-style: none;}
 		background-position: -182px 0px;
 	}
 }
+
+
+
+
+/*第三幅画*/
+.itme3 {position: absolute;width: 100%;height: 100%;}
+.c_background {
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	position: absolute;
+}
+.c_background_top {
+	width: 100%;
+	height: 71.6%;
+	background: url(../img/images/background/c_background_top.png) no-repeat;
+	background-size: 100% 100%;
+}
+.c_background_middle {
+	width: 100%;
+	height: 13.1%;
+	background: url(../img/images/background/c_background_middle.png) no-repeat;
+	background-size: 100% 100%;
+}
+.c_background_bottom {
+	width: 100%;
+	height: 15.3%;
+	background: url(../img/images/background/c_background_botton.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+
+/*小女孩*/
+.girl {
+	background: url(../img/images/girl.png) -755px 0px no-repeat;
+	position: absolute;
+	right: 40%;
+	top:25%;
+	width: 151px;
+	height: 291px;
+
+}
+/*桥*/
+.bridge-bottom {
+	position: absolute;
+	width: 41%;
+	height: 24%;
+	left: 29.5%;
+	top: 76%;
+	overflow: hidden;
+	/*background-color: #ccc;*/
+}
+.water {
+	height: 100%;
+	width: 100%;
+	/*z-index: 20;*/
+}
+.water1,
+.water2,
+.water3,
+.water4{
+	width: 100%;
+	position: absolute;
+	height: 50%;
+	/*animation: shake 40s  infinite;*/
+	-webkit-animation-name: shake;
+    -webkit-animation-duration: 40s;
+    -webkit-animation-direction: alternate;
+    -webkit-anination-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+.water1 {
+	width: 131px;
+	height: 15px;
+	top: 13%;
+	left: 35%;
+	background: url(../img/images/water.png) -261px 0 no-repeat;
+}
+.water2 {
+	width: 191px;
+	height: 9px;
+	top: 28%;
+	left: 45%;
+	background: url(../img/images/water.png) -693px 0 no-repeat;
+	 -webkit-animation-delay: 2s;
+}
+.water3 {
+	width: 261px;
+	height: 29px;
+	top: 50%;
+	left: 15%;
+	background: url(../img/images/water.png) -0px 0 no-repeat;
+	 -webkit-animation-delay: 1s;
+}
+.water4 {
+	width: 301px;
+	height: 12px;
+	top: 75%;
+	left: 30%;
+	background: url(../img/images/water.png) -392px 0 no-repeat;
+	 -webkit-animation-delay: 3s;
+}
+
+@-webkit-keyframes shake {
+	0%,100% {
+		-webkit-transform:translate(0,0);
+	}
+	10%,30%,50%,70%,90% {
+		-webkit-transform:translate(-30px,0);
+	}
+	20%,40%,60%,80% {
+		-webkit-transform: translate(30px,0);
+	}
+}
+
+/*星星*/
+.stars {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+
+}
+.stars li {
+	position: absolute;
+	width: 30px;
+	height: 31px;
+	background: url(../img/images/stars.png);
+	animation: flash  5s ease-in-out infinite alternate 
+}
+.stars1 {
+	top: 20%;
+	left: 30%;
+	animation-duration: 5s; 
+}
+.stars2 {
+	top: 10%;
+	left: 20%;
+	animation-duration: 5s; 
+}
+.stars3 {
+	top: 20%;
+	left: 30%;
+	animation-duration: 5s; 
+}
+.stars4 {
+	top: 35%;
+	left: 10%;
+	animation-duration: 5s; 
+}
+.stars5 {
+	top: 30%;
+	left: 5%;
+	animation-duration: 5s; 
+}
+.stars6 {
+	top: 10%;
+	left:5%;
+	animation-duration: 5s; 
+}
+@keyframes  flash{
+	0%,50%,100% {
+		opacity: 1;
+	}
+	25%,75% {
+		opacity: 0;
+	}
+}
+
