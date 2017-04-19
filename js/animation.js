@@ -163,6 +163,16 @@ return {
 	  },
 	  takeflower:function(){
 	  	return takeflower();
+	  },
+	  getwidth:function(){
+	  	return $boy.width();
+	  },
+	  resetOriginal:function(){
+	  	this.stopwalk();
+	  	$boy.removeClass('slowWalk slowFlolerWalk').addClass('boyOriginal');
+	  },
+	  rotate:function(){
+	  	$boy.addClass('boy-rotate');
 	  }
 
 

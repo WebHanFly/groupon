@@ -73,6 +73,7 @@
 			</li>
 		</ul>
 		<div id="boy" class="charactor"></div>
+		<div id="snowflake"></div>
 	</div>
 </body>
 <script>
@@ -155,13 +156,73 @@ var girl = {
 	},
 	getwidth:function(){
 		return this.elem.width();
-	}
+	},
+	rotate: function() {
+            this.elem.addClass('girl-rotate');
+        },
 
 
 };
 // 修正小女孩的位置
   girl.setoffset();
 
+
+// 飘花
+  var snowflakeURl = [
+        'img/images/snowflake/snowflake1.png',
+        'img/images/snowflake/snowflake2.png',
+        'img/images/snowflake/snowflake3.png',
+        'img/images/snowflake/snowflake4.png',
+        'img/images/snowflake/snowflake5.png',
+        'img/images/snowflake/snowflake6.png'
+    ];
+    function snowflake(){
+    	var $flakecontainer = $('#snowflake');
+    	function getImagesname(){
+    		return snowflakeURl[[Math.floor(Math.random()*6)]];
+    	}
+    	// 创建一个雪花元素；
+    	function createsnowbox (){
+    		var url = getImagesname();
+    		return $('<div class="snowbox" />').css({
+    			'width':41,
+    			'height':41,
+    			'position':'absolute',
+    			'backgroundSize': 'cover',
+                'zIndex': 100000,
+                'top': '-41px',
+                'backgroundImage': 'url(' + url + ')'
+    		}).addClass('snowRoll');	
+    	}
+    	// 开始飘花
+    	setInterval(function(){
+    		// 运动轨迹
+    		var starpositionleft = Math.random()*visualWidth-100,
+    		startopacity = 1,
+    		endpositiontop = visualHeight - 40,
+    		endpositionleft = starpositionleft - 100 + Math.random()*5000;
+    		var randomstart = Math.random();
+    		randomstart = randomstart <0.5 ? startopacity : randomstart;
+    		//创建一个雪花
+    		var $flake = createsnowbox();
+    		//起点
+    		$flake.css({
+    			left:starpositionleft,
+    			opacity: randomstart
+    		});
+    		//加入容器
+    		$flakecontainer.append($flake);
+    		$flake.animate({
+    			top:600,
+    			left:endpositionleft,
+    			opacity:0.7,
+
+    		},'10000', 'linear',function(){
+    			$(this).remove();
+    		});
+
+    	},200);
+    }
 
 
 
@@ -199,8 +260,22 @@ var girl = {
       }).then(function(){
       	return boy.walkTo(1500,0.25, (bridgeY - girl.getHeight()) / visualHeight);
       }).then(function(){
-      	return boy.walkTo(1200,0.35);
-      });
+      	var proportionX = (girl.getoffset().left - boy.getwidth() + girl.getwidth() / 5) / visualWidth;
+                // 第三次桥上直走到小女孩面前
+                return boy.walkTo(1500, proportionX);
+      	
+      }).then(function() {
+                // 图片还原原地停止状态
+                boy.resetOriginal();
+            }).then(function() {
+                // 增加转身动作 
+                setTimeout(function() {
+                    girl.rotate();
+                    boy.rotate();
+                }, 1000);
+            }).then(function(){
+            	snowflake();
+            });
       
 //console.log()
 
